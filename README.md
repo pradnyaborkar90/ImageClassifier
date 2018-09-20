@@ -23,3 +23,18 @@ Steps to run this program on your PC:
 
 
 6)Now you are  ready to run the code
+
+
+Libraries to be installed in python are:
+
+pip install keras
+
+pip install tqdm
+
+pip install matplotlib
+
+pip install os #if not present
+
+pip install numpy
+
+### If you like this repo then please take a look at other repositories as well you may discover something interesting and worth trying too.
