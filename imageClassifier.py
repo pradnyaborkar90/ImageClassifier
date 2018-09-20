@@ -1,4 +1,3 @@
-# Importing the Keras libraries and packages
 from keras.models import Sequential
 from keras.layers import Conv2D
 from keras.layers import MaxPooling2D
@@ -29,11 +28,11 @@ shear_range = 0.2,
 zoom_range = 0.2,
 horizontal_flip = True)
 test_img_gen = ImageDataGenerator(rescale = 1./255)
-training_set = train_img_gen.flow_from_directory('C:/Users/pradn/Desktop/BE/examples/test/',
+training_set = train_img_gen.flow_from_directory(#paste the path to the train Directory,
 target_size = (64, 64),
 batch_size = 32,
 class_mode = 'binary')
-test_set = test_img_gen.flow_from_directory('C:/Users/pradn/Desktop/BE/examples/test/',
+test_set = test_img_gen.flow_from_directory(#paste the path to the test Directory,
 target_size = (64, 64),
 batch_size = 32,
 class_mode = 'binary')
@@ -48,25 +47,16 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from keras.preprocessing import image
 
-labels=[]
-img_name=[]
-for img in os.listdir("C:/Users/pradn/Desktop/BE/examples/prediction"):
-	img_name.append("C:/Users/pradn/Desktop/BE/examples/prediction/"+img)
-	test_image = image.load_img("C:/Users/pradn/Desktop/BE/examples/prediction/"+img, target_size = (64, 64))
+img_name=[] #list of images to be predicted
+labels=[] #list of labels of predicted images
+
+for img in os.listdir("#paste the path to the prediction folder"):
+	img_name.append("#path to prediction folder"+"/"+img)
+	test_image = image.load_img("#path to prediction folder"+"/"+img, target_size = (64, 64))
 	test_image = image.img_to_array(test_image)
 	test_image = np.expand_dims(test_image, axis = 0)
 	result = Image_classifier.predict(test_image)
 	training_set.class_indices
-	#print(img)
-	"""imagess=mpimg.imread("C:/Users/pradn/Desktop/BE/examples/prediction/"+img)
-	plt.imshow(imagess)
-	plt.show()
-	if result[0][0] == 1:
-		prediction = 'yoga'
-	else:
-		prediction = 'dance'
-	print(prediction)
-	"""
 	if result[0][0] == 1:
 		prediction = 'yoga'
 	else:
